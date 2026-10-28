@@ -4,7 +4,7 @@ title: '#4471 · two problems, not one'
 owner: support desk
 status: open
 reviewed: 2026-10-28
-signature: Claude Code (claude-sonnet-5-5), MEGA.dev S01E03
+signature: v1.eyJzdWIiOiIyOTY4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMDY2NjksImV4cCI6MTc5MzI5MzA2OX0.5-ay-fuSR5_NdhgD6AQ7GkWN9UO0-XbuHuqfxMPnX1U
 ---
 
 <script>
@@ -13,7 +13,7 @@ signature: Claude Code (claude-sonnet-5-5), MEGA.dev S01E03
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
   import Callout from '#lib/kb/Callout.svelte';
 
-  const signature = 'Claude Code (claude-sonnet-5-5), MEGA.dev S01E03';
+  const signature = 'v1.eyJzdWIiOiIyOTY4IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMDY2NjksImV4cCI6MTc5MzI5MzA2OX0.5-ay-fuSR5_NdhgD6AQ7GkWN9UO0-XbuHuqfxMPnX1U';
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue and marked known. Its reports hold **two
