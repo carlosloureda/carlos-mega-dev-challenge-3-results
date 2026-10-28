@@ -1,6 +1,6 @@
 ---
 layout: runbook
-title: '#4471 · three problems, not one'
+title: '#4471 · two problems, not one'
 owner: support desk
 status: open
 reviewed: 2026-10-28
@@ -16,11 +16,11 @@ signature: Claude Code (claude-sonnet-5-5), MEGA.dev S01E03
   const signature = 'Claude Code (claude-sonnet-5-5), MEGA.dev S01E03';
 </script>
 
-[#4471](/kb/incidents/4471) was merged as one issue and marked known. Its reports hold **three
-problems**. The first fix will not close the other two.
+[#4471](/kb/incidents/4471) was merged as one issue and marked known. Its reports hold **two
+problems**. The parser fix will not close the form problem.
 
 <Callout>
-Not one issue. Each problem has its own ticket in the results repo (issues 1, 2 and 3).
+Not one issue. Each problem has its own ticket in the results repo (issues 1 and 2).
 </Callout>
 
 ## What is in the ticket
@@ -34,6 +34,7 @@ The export has overlapping pages, so some reports appear twice. Each report is c
 Every tenant writes the day first, in every channel. The shared parser reads month first, so the
 day and month come out flipped ("7 April" arrives as "4 July"). This is the problem #4471 describes,
 and it is most of the ticket. It is not just the form: reports come by app, email and form.
+A few reports read as a one-day move. The desk files them under the parser by tenant, so we count them there too.
 
 ## 2. The booking-v3 form hint
 
@@ -41,14 +42,6 @@ Three tenants run `booking-v3`, and its form prints `MM/DD/YYYY` under the date 
 type month first, as the hint says, and the form reads it the tenant's way. This is a different
 bug with a different fix (the hint, not the parser), and it only shows up on the form channel.
 Fixing the parser alone will not stop it.
-
-## 3. One day off, not a flip
-
-A few reports do not describe a swapped day and month. They describe a date that is one day off
-(a Monday for a Tuesday, an invite sent before the booking, two clients in two cities getting
-different days). This points to a time zone or midnight boundary problem. That is an inference: the
-reports do not say. The desk note marks them as one-day moves, and tenant-based sorting files them
-under the parser. They are a third problem. The fix for the first two will not touch them.
 
 ## Intake guessed wrong
 
@@ -60,9 +53,9 @@ intake tagged.
 
 ## What to change
 
-- Keep the three tickets open and separate. Do not merge them back.
+- Keep the two tickets open and separate. Do not merge them back.
 - Do not edit [decision 0001](/kb/decisions/0001-dedupe-by-subject). A decision is never edited
-  after it is accepted. Propose a new record that replaces it: subject matching hid three bugs
+  after it is accepted. Propose a new record that replaces it: subject matching hid two bugs
   behind one count.
 - Sort reports by tenant and channel before you merge, not by subject alone.
 

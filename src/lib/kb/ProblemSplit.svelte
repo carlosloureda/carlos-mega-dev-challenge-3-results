@@ -6,22 +6,22 @@
 
   let { ticket }: { ticket: number } = $props();
 
-  type Problem = 'flip' | 'hint' | 'oneDay';
-  const LABEL: Record<Problem, string> = {
-    flip: 'Parser reads day-first dates month first',
+  const LABEL = {
+    parser: 'Parser reads day-first dates month first',
     hint: 'booking-v3 form hint tells day-first people to type month first',
-    oneDay: 'Date is one day off (not a day/month flip)',
-  };
+  } as const;
 
-  // A one-day move is its own symptom (desk-notes.json); causeOf alone files it under `parser`.
-  const problemOf = (r: Report): Problem =>
-    notes.oneDayMove.includes(r.id) ? 'oneDay' : causeOf(r, tenantOf(r)) === 'hint' ? 'hint' : 'flip';
-
+  // Same view as CauseTable: counted where the tenant files them, one-day moves footnoted.
   const merged = $derived(uniqueById(reports as Report[]).filter((r) => r.mergedInto === ticket));
   const rows = $derived(
-    (Object.keys(LABEL) as Problem[]).map((p) => {
-      const rs = merged.filter((r) => problemOf(r) === p);
-      return { p, rs, tenants: new Set(rs.map((r) => r.tenant)).size };
+    (Object.keys(LABEL) as (keyof typeof LABEL)[]).map((c) => {
+      const rs = merged.filter((r) => causeOf(r, tenantOf(r)) === c);
+      return {
+        c,
+        n: rs.length,
+        tenants: new Set(rs.map((r) => r.tenant)).size,
+        moved: rs.filter((r) => notes.oneDayMove.includes(r.id)).length,
+      };
     }),
   );
 </script>
@@ -31,8 +31,13 @@
 <table>
   <thead><tr><th>problem</th><th>reports</th><th>tenants</th></tr></thead>
   <tbody>
-    {#each rows as row (row.p)}
-      <tr><td>{LABEL[row.p]}</td><td>{row.rs.length}</td><td>{row.tenants}</td></tr>
+    {#each rows as row (row.c)}
+      <tr>
+        <td>{LABEL[row.c]}</td><td>{row.n}</td><td>{row.tenants}</td>
+      </tr>
     {/each}
   </tbody>
 </table>
+{#each rows as row (row.c)}
+  {#if row.moved}<p><small>{row.moved} of the {row.c} reports read as a one-day move; filed under {row.c} by tenant.</small></p>{/if}
+{/each}

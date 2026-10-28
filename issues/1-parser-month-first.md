@@ -1,4 +1,4 @@
-**Reports covered: 374**
+**Reports covered: 379**
 
 The shared parser reads every date month first. All 11 tenants write the day first, so dates come out flipped ("7 April" arrives as "4 July").
 
@@ -7,8 +7,10 @@ The shared parser reads every date month first. All 11 tenants write the day fir
 - Channels: app 202, email 147, form 25
 - Intake tagged: parser 351, hint 23. The 23 tagged `hint` are en-US browsers on day-first tenants, so intake guessed wrong.
 
+Includes 5 reports that read as a one-day move (R-41202, R-41209, R-41236, R-41344, R-41620). The desk files them under the parser by tenant and counts them here.
+
 How to tell: the report is not one of problems 2 or 3. It is a day-first tenant, any channel, and the body shows day and month swapped.
 
-Fix: the parser, not the form. Report ids: every report in #4471 except those listed in issues 2 and 3.
+Fix: the parser, not the form. Report ids: every report in #4471 except those listed in issue 2.
 
-Part of support ticket #4471 (412 reports, merged as one issue). Counts are from the kb export of 2026-10-04, each report counted once by id (the export repeats 15 rows). 374 + 33 + 5 = 412.
+Part of support ticket #4471 (412 reports, merged as one issue). Counts are from the kb export of 2026-10-04, each report counted once by id (the export repeats 15 rows). 379 + 33 = 412.

@@ -11,4 +11,4 @@ Fix: the hint text on booking-v3 (show the tenant's own order), not the parser.
 
 Report ids: R-41230, R-41241, R-41251, R-41259, R-41262, R-41275, R-41294, R-41305, R-41308, R-41366, R-41372, R-41384, R-41387, R-41396, R-41400, R-41406, R-41415, R-41416, R-41418, R-41428, R-41439, R-41441, R-41449, R-41453, R-41456, R-41460, R-41472, R-41485, R-41493, R-41539, R-41572, R-41582, R-41584
 
-Part of support ticket #4471 (412 reports, merged as one issue). Counts are from the kb export of 2026-10-04, each report counted once by id (the export repeats 15 rows). 374 + 33 + 5 = 412.
+Part of support ticket #4471 (412 reports, merged as one issue). Counts are from the kb export of 2026-10-04, each report counted once by id (the export repeats 15 rows). 379 + 33 = 412.
